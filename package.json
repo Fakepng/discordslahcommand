@@ -1,0 +1,17 @@
+{
+  "name": "discordslahcommand",
+  "version": "1.0.0",
+  "description": "Try with slash command",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fakepng",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "discord.js": "^13.6.0",
+    "glob": "^7.2.0",
+    "mongoose": "^6.2.8"
+  }
+}
