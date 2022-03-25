@@ -1,5 +1,9 @@
 const { Client, Collection } = require("discord.js");
 const { Token } = require("./config.json")
+const { promisify } = require("util");
+const { glob } = require("glob");
+const PG = promisify(glob);
+const Ascii = require("ascii-table");
 const client = new Client({
     intents: [
         "GUILDS",
@@ -13,7 +17,8 @@ const client = new Client({
 
 client.commands = new Collection();
 
-require("./Handlers/Events")(client);
-require("./Handlers/Commands")(client);
+["Events", "Commands"].forEach(handler => {
+    require(`./Handlers/${handler}`)(client, PG, Ascii);
+});
 
 client.login(Token)

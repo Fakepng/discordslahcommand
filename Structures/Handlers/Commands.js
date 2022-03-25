@@ -1,15 +1,11 @@
 const { Perms } = require("../Validation/Premissions");
 const { Client } = require("discord.js");
-const { promisify } = require("util");
-const { glob } = require("glob");
-const PG = promisify(glob);
-const Ascii = require("ascii-table");
 const { Guild } = require("../config.json")
 
 /**
  * @param {Client} client
  */
-module.exports = async (client) => {
+module.exports = async (client, PG, Ascii) => {
     const Table = new Ascii("Command Loaded");
 
     CommandsArray = [];
@@ -20,7 +16,7 @@ module.exports = async (client) => {
         if (!command.name) 
         return Table.addRow(file.split("/")[7], "❌ Failed", "Missing a name");
 
-        if (!command.description) 
+        if (!command.context && !command.description) 
         return Table.addRow(command.name, "❌ Failed", "Missing a description");
 
         if (command.permission) {

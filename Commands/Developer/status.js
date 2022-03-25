@@ -29,6 +29,6 @@ function switchTo(val) {
         case 1 : status = "🟢 CONNECTED"; break;
         case 2 : status = "🟠 CONNECTING"; break;
         case 3 : status = "🟡 RECONNECTING"; break;
-    }
+    } 
     return status;
 }
